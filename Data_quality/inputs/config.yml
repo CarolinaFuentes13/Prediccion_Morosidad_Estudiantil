@@ -1,0 +1,101 @@
+archivos:
+  - nombre: "CRq - Creditos Financieros (Plano).xlsx"
+    columnas:
+      - Periodo_facturacion
+      - Linea
+      - Nombre_linea
+      - Fecha_aprobacion
+      - Cliente
+      - Nombre_fondo
+      - No_credito
+      - Valor_financiacion
+      - Vr_neto_matricula
+      - Cuotas
+      - Tipo_interes
+      - Estado_credito
+      - Saldo_credito
+  - nombre: "CCq - Cartera edades cliente (Plano).xlsx"
+    columnas:
+      - Nombre_edad
+      - Dias
+      - Saldo
+      - Tipo_cartera
+      - Cliente
+      - Concepto
+      - Fecha_vence
+      - Periodo
+      - Nombre_periodo
+      - Genera_mora
+      - Tasa_interes_mora
+      - Credito
+      - Cuota
+  - nombre: "Matriz total 2021-2025 .xlsx"
+    columnas:
+      - fecha_creacion_transaccion
+      - Mora
+      - Valor_Matricula
+      - Valor_cuota_inicial 
+      - "Valor_Primera cuota"
+      - "fecha de pago"
+      - Dirección
+      - Ciudad
+      - Departamento
+      - "Validación valor financiado"
+      - "Detalle estado final"
+      - "ID Estudiante"
+      - Periodo
+      - "Tipo de estudiante"
+      - Operación
+      - Cate
+      - Subcate
+      - Cohorte
+      - Mes
+      - Cliente
+      - "Media Score"
+      - AñoB
+      - "VALOR MAXIMO"
+      - "VALOR MEDIO"
+      - "VALOR BAJO"
+      - Plataforma
+  - nombre: "MAFI 2021-2024.xlsx"
+    columnas:
+      - IDBANNER
+      - FECHA_NACIMIENTO
+      - ESTADO_CIVIL
+      - DIRECCION
+      - CIUDAD
+      - CODCIUDAD
+      - GENERO
+      - FACULTAD
+      - PROGRAMA
+      - NIVEL
+      - PERIODO
+      - ESTADO
+      - TIPOESTUDIANTE
+      - SEDE
+      - SELLO
+      - CARGA
+      - GRUPO_ETNICO
+      - TIPO_DISCAPACIDAD
+      - NACIONALIDAD
+  - nombre: "MAFI 2025.xlsx"
+    columnas:
+      - IDBANNER
+      - FECHA_NACIMIENTO
+      - ESTADO_CIVIL
+      - DIRECCION
+      - CIUDAD
+      - CODCIUDAD
+      - GENERO
+      - FACULTAD
+      - PROGRAMA
+      - NIVEL
+      - PERIODO
+      - ESTADO
+      - TIPOESTUDIANTE
+      - SEDE
+      - SELLO
+      - CARGA
+      - GRUPO_ETNICO
+      - TIPO_DISCAPACIDAD
+      - NACIONALIDAD
