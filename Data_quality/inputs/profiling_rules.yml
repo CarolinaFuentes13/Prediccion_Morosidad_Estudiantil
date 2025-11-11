@@ -1,0 +1,762 @@
+"CRq - Creditos Financieros (Plano).xlsx":
+  filters:
+    col_1:
+      name: "Linea"
+      value: [42,43,44,45,46,47,48,49,50,51,52,53,54,55]
+    col_2:
+      name: "Estado_credito"
+      value: ["Cancelado","En Cartera"]
+    col_3:
+      name: "Vr_neto_matricula"
+      value: NULL
+  pf_1:
+    column: "Periodo_facturacion"
+    rule: "Campos vacios 'Periodo_facturacion'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_2:
+    column: "Linea"
+    rule: "Campos vacios 'Linea'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_3:
+    column: "Nombre_linea"
+    rule: "Campos vacios 'Nombre_linea'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_4:
+    column: "Fecha_aprobacion"
+    rule: "Campos vacios 'Fecha_aprobacion'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_5:
+    column: "Cliente"
+    rule: "Campos vacios 'Cliente'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_6:
+    column: "Nombre_fondo"
+    rule: "Campos vacios 'Nombre_fondo'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_7:
+    column: "No_credito"
+    rule: "Campos vacios 'No_credito'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_8:
+    column: "Valor_financiacion"
+    rule: "Campos vacios 'Valor_financiacion'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_9:
+    column: "Cuotas"
+    rule: "Campos vacios 'Cuotas'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_10:
+    column: "Tipo_interes"
+    rule: "Campos vacios 'Tipo_interes'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_11:
+    column: "Estado_credito"
+    rule: "Campos vacios 'Estado_credito'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_12:
+    column: "Saldo_credito"
+    rule: "Campos vacios 'Saldo_credito'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_13:
+    column: "Periodo_facturacion"
+    rule: "Validación periodos facturacion"
+    dimension: Exactitud
+    descripcion: "Los primeros 4 dígitos deben ser entre 2020 y un año mayor al año actual"
+  pf_14:
+    column: "Periodo_facturacion"
+    rule: "Longitud de campo"
+    dimension: Validez
+    descripcion: "El texto debe ser de 6 dígitos"
+  pf_15:
+    column: "Linea"
+    rule: "Longitud de campo"
+    dimension: Validez
+    descripcion: "El texto debe ser de 2 dígitos"
+  pf_16:
+    column: "Fecha_aprobacion"
+    rule: "Validación tipo de dato fecha"
+    dimension: Validez
+    descripcion: "Debe ser una fecha válida"
+  pf_17:
+    column: "Fecha_aprobacion"
+    rule: "Consistencia en fechas"
+    dimension: Consistencia
+    descripcion: "El año de la fecha de aprobación no debe ser 2 años menor al periodo de facturación"
+  pf_18:
+    column: "No_credito"
+    rule: "Tipo de dato 'No_credito'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_19:
+    column: "Valor_financiacion"
+    rule: "Tipo de dato 'Valor_financiacion'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_20:
+    column: "Cuotas"
+    rule: "Tipo de dato 'Cuotas'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_21:
+    column: "Saldo_credito"
+    rule: "Tipo de dato 'Saldo_credito'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_22:
+    column: "Cuotas"
+    rule: "Cantidad de cuotas mínimas y máximas"
+    dimension: Validez
+    descripcion: "Las cuotas deben estar en un rango de 1 a 12"
+  pf_23:
+    column: "Valor_financiacion"
+    rule: "Cantidad mínima de valor a financiar"
+    dimension: Validez
+    descripcion: "Es mayor a 0 y nunca es superior al 85% del la totalidad de la matrícula  'Vr_neto_matricula'"
+
+"CCq - Cartera edades cliente (Plano).xlsx":
+  filters:
+    col_1:
+      name: "Concepto"
+      value: ["118/19 CARGO DE LA FINANCIACION MATRICULAS"]
+  pf_1:
+    column: "Nombre_edad"
+    rule: "Campos vacios 'Nombre_edad'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_2:
+    column: "Dias"
+    rule: "Campos vacios 'Dias'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_3:
+    column: "Saldo"
+    rule: "Campos vacios 'Saldo'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_4:
+    column: "Tipo_cartera"
+    rule: "Campos vacios 'Tipo_cartera'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_5:
+    column: "Cliente"
+    rule: "Campos vacios 'Cliente'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_6:
+    column: "Concepto"
+    rule: "Campos vacios 'Concepto'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_7:
+    column: "Fecha_vence"
+    rule: "Campos vacios 'Fecha_vence'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_8:
+    column: "Periodo"
+    rule: "Campos vacios 'Periodo'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_9:
+    column: "Nombre_periodo"
+    rule: "Campos vacios 'Nombre_periodo'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_10:
+    column: "Genera_mora"
+    rule: "Campos vacios 'Genera_mora'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_11:
+    column: "Tasa_interes_mora"
+    rule: "Campos vacios 'Tasa_interes_mora'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_12:
+    column: "Credito"
+    rule: "Campos vacios 'Credito'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_13:
+    column: "Cuota"
+    rule: "Campos vacios 'Cuota'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_14:
+    column: "Nombre_edad"
+    rule: "Texto de edad cartera es válido"
+    dimension: Validez
+    descripcion: "La edad de cartera debe ser alguno de los siguientes textos: 'MAS DE 360 DIAS', 'DE 181 A 360','DE 91 A 180 DIAS','DE 61 A 90 DIAS','DE 31 A 60 DIAS','DE 0 A 30 DIAS','DE 0 A 30 DIAS POR VENCER','DE 31 A 60 DIAS  POR VENCER','DE 61 A 90 DIAS  POR VENCER','DE 91 A 180 DIAS  POR VENCER','DE 181 A 360  POR VENCER','MAS DE 360 DIAS  POR VENCER'"
+  pf_15:
+    column: "Dias"
+    rule: "Dias de pago para la couta"
+    dimension: Validez
+    descripcion: "Debe ser un campo numérico"
+  pf_16:
+    column: "Saldo"
+    rule: "Saldo de la couta numérico"
+    dimension: Validez
+    descripcion: "Debe ser un campo numérico"
+  pf_17:
+    column: "Saldo"
+    rule: "Saldo de la cuota no negativo"
+    dimension: Validez
+    descripcion: "El número no debe ser negativo o 0"
+  pf_18:
+    column: "Tipo_cartera"
+    rule: "Tipo_cartera coincide con los dias para pago de cuota"
+    dimension: Consistencia
+    descripcion: "Si los DIAS son negativos entonces el tipo cartera debe ser 'POR VENCER' y si es positiva 'VENCIDA'"
+  pf_19:
+    column: "Tipo_cartera"
+    rule: "Texto de tipo cartera es válido"
+    dimension: Validez
+    descripcion: "El tipo de cartera debe ser alguno de los siguientes textos: 'POR VENCER', 'VENCIDA'"
+  pf_20:
+    column: "Concepto"
+    rule: "Texto de Concepto es válido"
+    dimension: Validez
+    descripcion: "El Concepto debe ser: '118/19 CARGO DE LA FINANCIACION MATRICULAS'"
+  pf_21:
+    column: "Fecha_vence"
+    rule: "Tipo de dato Fecha_vence"
+    dimension: Validez
+    descripcion: "Fecha_vence debe ser de tipo fecha'"
+  pf_22:
+    column: "Periodo"
+    rule: "Longitud de campo"
+    dimension: Validez
+    descripcion: "El texto debe ser de 6 dígitos"
+  pf_23:
+    column: "Genera_mora"
+    rule: "Texto de tipo genera mora es válido"
+    dimension: Validez
+    descripcion: "El tipo de cartera debe ser alguno de los siguientes textos: 'N', 'S'"
+  pf_24:
+    column: "Tasa_interes_mora"
+    rule: "Tipo de dato Tasa_interes_mora"
+    dimension: Validez
+    descripcion: "Tasa_interes_mora debe ser de tipo float'"
+  pf_25:
+    column: "Credito"
+    rule: "Tipo de dato Credito"
+    dimension: Validez
+    descripcion: "Credito debe ser de tipo entero'"
+  pf_26:
+    column: "Cuota"
+    rule: "Cantidad de cuotas mínimas y máximas"
+    dimension: Validez
+    descripcion: "Las cuotas deben estar en un rango de 1 a 12"
+
+"Matriz total 2021-2025 .xlsx":
+  filters:
+    col_1:
+      name: "Cate"
+      value: ["Crédito aprobado", "Sello Financiero"]
+  pf_1:
+    column: "fecha_creacion_transaccion"
+    rule: "Campos vacios 'fecha_creacion_transaccion'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_2:
+    column: "Mora"
+    rule: "Campos vacios 'Mora'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_3:
+    column: "Valor_Matricula"
+    rule: "Campos vacios 'Valor_Matricula'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_4:
+    column: "Valor_cuota_inicial"
+    rule: "Campos vacios 'Valor_cuota_inicial'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_5:
+    column: "Valor_Primera cuota"
+    rule: "Campos vacios 'Valor_Primera cuota'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_6:
+    column: "fecha de pago"
+    rule: "Campos vacios 'fecha de pago'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_7:
+    column: "Dirección"
+    rule: "Campos vacios 'Dirección'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_8:
+    column: "Ciudad"
+    rule: "Campos vacios 'Ciudad'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_9:
+    column: "Departamento"
+    rule: "Campos vacios 'Departamento'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_10:
+    column: "Validación valor financiado"
+    rule: "Campos vacios 'Validación valor financiado'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_11:
+    column: "Detalle estado final"
+    rule: "Campos vacios 'Detalle estado final'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_12:
+    column: "ID Estudiante"
+    rule: "Campos vacios 'ID Estudiante'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_13:
+    column: "Periodo"
+    rule: "Campos vacios 'Periodo'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_14:
+    column: "Tipo de estudiante"
+    rule: "Campos vacios 'Tipo de estudiante'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_15:
+    column: "Operación"
+    rule: "Campos vacios 'Operación'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_16:
+    column: "Cate"
+    rule: "Campos vacios 'Cate'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_17:
+    column: "Subcate"
+    rule: "Campos vacios 'Subcate'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_18:
+    column: "Cohorte"
+    rule: "Campos vacios 'Cohorte'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_19:
+    column: "Mes"
+    rule: "Campos vacios 'Mes'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_20:
+    column: "Cliente"
+    rule: "Campos vacios 'Cliente'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_21:
+    column: "Media Score"
+    rule: "Campos vacios 'Media Score'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_22:
+    column: "AñoB"
+    rule: "Campos vacios 'AñoB'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_23:
+    column: "VALOR MAXIMO"
+    rule: "Campos vacios 'VALOR MAXIMO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_24:
+    column: "VALOR MEDIO"
+    rule: "Campos vacios 'VALOR MEDIO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_25:
+    column: "VALOR BAJO"
+    rule: "Campos vacios 'CrediVALOR BAJOto'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_26:
+    column: "Plataforma"
+    rule: "Campos vacios 'Plataforma'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_27:
+    column: "fecha_creacion_transaccion"
+    rule: "Validación tipo de dato fecha"
+    dimension: Validez
+    descripcion: "Debe ser una fecha válida"
+  pf_28:
+    column: "fecha_creacion_transaccion"
+    rule: "Fecha creacion transacción mayor al 2020"
+    dimension: Validez
+    descripcion: "El año de la fecha debe ser mayor al 2020 y máximo igual al año en curso"
+  pf_29:
+    column: "Mora"
+    rule: "Valore válidos en 'Mora'"
+    dimension: Validez
+    descripcion: "La mora debe ser alguno de los siguientes textos: 'Si', 'No'"
+  pf_30:
+    column: "Valor_cuota_inicial"
+    rule: "Valor numérico y mayor a 0"
+    dimension: Validez
+    descripcion: "El valor de cuota inicial debe ser tipo float y mayor a 0'"
+  pf_31:
+    column: "Valor_Primera cuota"
+    rule: "Valor numérico y mayor a 0"
+    dimension: Validez
+    descripcion: "El valor de primera cuota debe ser tipo float y mayor a 0'"
+  pf_32:
+    column: "fecha de pago"
+    rule: "Día de fecha de pago válido"
+    dimension: Validez
+    descripcion: "La fecha de pago debe ser un número mayor o igual a 1 y menor o igual a 30'"
+  pf_33:
+    column: "Ciudad"
+    rule: "Ciudades válidas"
+    dimension: Validez
+    descripcion: "Las ciudades deben ser alfabeticas es decir contiene de la A-Z no numericas'"
+  pf_34:
+    column: "Departamento"
+    rule: "Departamento válidos"
+    dimension: Validez
+    descripcion: "Los departamentos deben ser alfabeticas es decir contiene de la A-Z no numericas'"
+  pf_35:
+    column: "Validación valor financiado"
+    rule: "Valor numérico y mayor a 0"
+    dimension: Validez
+    descripcion: "El valor valor financiado debe ser tipo float y mayor a 0'"
+  pf_36:
+    column: "Detalle estado final"
+    rule: "Detalle estado final es un valor válido"
+    dimension: Validez
+    descripcion: "El detalle estado final debe ser alguno de los siguientes textos: 'Desembolsado', 'Aprobada en preanalisis y analisis sin desembolsar', 'Aprobado Completo', 'Aprobado Incompleto'"
+  pf_37:
+    column: "ID Estudiante"
+    rule: "ID Estudiante numérico"
+    dimension: Validez
+    descripcion: "El ID Estudiante debe ser numérico'"
+  pf_38:
+    column: "Periodo"
+    rule: "Validación Periodo"
+    dimension: Exactitud
+    descripcion: "Los primeros 4 dígitos deben ser entre 2020 y un año mayor al año actual"
+  pf_39:
+    column: "Tipo de estudiante"
+    rule: "Tipo de estudiante no válidos"
+    dimension: Validez
+    descripcion: "El tipo de estudiante debe ser alfabeticas es decir contiene de la A-Z no numericas'"
+  pf_40:
+    column: "Cohorte"
+    rule: "Cohorte no válidos"
+    dimension: Validez
+    descripcion: "El Cohorte debe ser 'Cohorte' seguido por un número del 1 al 5"
+  pf_41:
+    column: "Mes"
+    rule: "Nombre mes válidos"
+    dimension: Validez
+    descripcion: "El nombre del mes debe ser uno valido, ej. 'Enero'"
+  pf_42:
+    column: "Cliente"
+    rule: "Cliente es un valor válido"
+    dimension: Validez
+    descripcion: "El cliente debe ser alguno de los siguientes textos: 'Estudiante', 'No estudiante'"
+  pf_43:
+    column: "AñoB"
+    rule: "AñoB es un valor válido"
+    dimension: Validez
+    descripcion: "El año debe ser mayor al 2020 y menor a un año mas del año actual"
+  pf_44:
+    column: "Plataforma"
+    rule: "Plataforma es un valor válido"
+    dimension: Validez
+    descripcion: "La plataforma debe ser alguno de los siguientes textos: 'ROMBO V1', 'ROMBO V2'"
+
+"MAFI 2021-2024.xlsx":
+  pf_1:
+    column: "IDBANNER"
+    rule: "Campos vacios 'IDBANNER'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_2:
+    column: "FECHA_NACIMIENTO"
+    rule: "Campos vacios 'FECHA_NACIMIENTO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_3:
+    column: "ESTADO_CIVIL"
+    rule: "Campos vacios 'ESTADO_CIVIL'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_4:
+    column: "DIRECCION"
+    rule: "Campos vacios 'DIRECCION'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_5:
+    column: "CIUDAD"
+    rule: "Campos vacios 'CIUDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_6:
+    column: "CODCIUDAD"
+    rule: "Campos vacios 'CODCIUDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_7:
+    column: "GENERO"
+    rule: "Campos vacios 'GENERO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_8:
+    column: "FACULTAD"
+    rule: "Campos vacios 'FACULTAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_9:
+    column: "PROGRAMA"
+    rule: "Campos vacios 'PROGRAMA'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_10:
+    column: "NIVEL"
+    rule: "Campos vacios 'NIVEL'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_11:
+    column: "PERIODO"
+    rule: "PERIODO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_12:
+    column: "ESTADO"
+    rule: "Campos vacios 'ESTADO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_13:
+    column: "TIPOESTUDIANTE"
+    rule: "Campos vacios 'TIPOESTUDIANTE'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_14:
+    column: "SEDE"
+    rule: "Campos vacios 'SEDE'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_15:
+    column: "SELLO"
+    rule: "Campos vacios 'SELLO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_16:
+    column: "CARGA"
+    rule: "Campos vacios 'CARGA'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_17:
+    column: "GRUPO_ETNICO"
+    rule: "Campos vacios 'GRUPO_ETNICO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_18:
+    column: "TIPO_DISCAPACIDAD"
+    rule: "Campos vacios 'TIPO_DISCAPACIDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_19:
+    column: "NACIONALIDAD"
+    rule: "Campos vacios 'NACIONALIDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_20:
+    column: "IDBANNER"
+    rule: "Tipo de dato 'IDBANNER'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_21:
+    column: "FECHA_NACIMIENTO"
+    rule: "Validación tipo de dato fecha"
+    dimension: Validez
+    descripcion: "Debe ser una fecha válida"
+  pf_22:
+    column: "CIUDAD"
+    rule: "Ciudades válidas"
+    dimension: Validez
+    descripcion: "Las ciudades deben ser alfabeticas es decir contiene de la A-Z no numericas'"
+  pf_23:
+    column: "CODCIUDAD"
+    rule: "Tipo de dato 'CODCIUDAD'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_24:
+    column: "GENERO"
+    rule: "Genero es un valor válido"
+    dimension: Validez
+    descripcion: "El genero debe ser alguno de los siguientes textos: 'F', 'M' o 'N'"
+  pf_25:
+    column: "PERIODO"
+    rule: "Validación periodo"
+    dimension: Exactitud
+    descripcion: "Los primeros 4 dígitos deben ser entre 2020 y un año mayor al año actual"
+  pf_26:
+    column: "ESTADO"
+    rule: "Estado es un valor válido"
+    dimension: Validez
+    descripcion: "El genero debe ser alguno de los siguientes textos: 'Activo', 'Inactivo'"
+  pf_27:
+    column: "CARGA"
+    rule: "CARGA es un valor no válido"
+    dimension: Validez
+    descripcion: "La carga no debe ser alguno de los siguientes textos: ' A '" 
+
+"MAFI 2025.xlsx":
+  pf_1:
+    column: "IDBANNER"
+    rule: "Campos vacios 'IDBANNER'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_2:
+    column: "FECHA_NACIMIENTO"
+    rule: "Campos vacios 'FECHA_NACIMIENTO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_3:
+    column: "ESTADO_CIVIL"
+    rule: "Campos vacios 'ESTADO_CIVIL'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_4:
+    column: "DIRECCION"
+    rule: "Campos vacios 'DIRECCION'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_5:
+    column: "CIUDAD"
+    rule: "Campos vacios 'CIUDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_6:
+    column: "CODCIUDAD"
+    rule: "Campos vacios 'CODCIUDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_7:
+    column: "GENERO"
+    rule: "Campos vacios 'GENERO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_8:
+    column: "FACULTAD"
+    rule: "Campos vacios 'FACULTAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_9:
+    column: "PROGRAMA"
+    rule: "Campos vacios 'PROGRAMA'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_10:
+    column: "NIVEL"
+    rule: "Campos vacios 'NIVEL'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_11:
+    column: "PERIODO"
+    rule: "PERIODO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_12:
+    column: "ESTADO"
+    rule: "Campos vacios 'ESTADO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_13:
+    column: "TIPOESTUDIANTE"
+    rule: "Campos vacios 'TIPOESTUDIANTE'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_14:
+    column: "SEDE"
+    rule: "Campos vacios 'SEDE'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_15:
+    column: "SELLO"
+    rule: "Campos vacios 'SELLO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_16:
+    column: "CARGA"
+    rule: "Campos vacios 'CARGA'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_17:
+    column: "GRUPO_ETNICO"
+    rule: "Campos vacios 'GRUPO_ETNICO'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_18:
+    column: "TIPO_DISCAPACIDAD"
+    rule: "Campos vacios 'TIPO_DISCAPACIDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_19:
+    column: "NACIONALIDAD"
+    rule: "Campos vacios 'NACIONALIDAD'"
+    dimension: Completitud
+    descripcion: "No debe tener valores nulos o vacios"
+  pf_20:
+    column: "IDBANNER"
+    rule: "Tipo de dato 'IDBANNER'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_21:
+    column: "FECHA_NACIMIENTO"
+    rule: "Validación tipo de dato fecha"
+    dimension: Validez
+    descripcion: "Debe ser una fecha válida"
+  pf_22:
+    column: "CIUDAD"
+    rule: "Ciudades válidas"
+    dimension: Validez
+    descripcion: "Las ciudades deben ser alfabeticas es decir contiene de la A-Z no numericas'"
+  pf_23:
+    column: "CODCIUDAD"
+    rule: "Tipo de dato 'CODCIUDAD'"
+    dimension: Validez
+    descripcion: "El texto debe ser numérico"
+  pf_24:
+    column: "GENERO"
+    rule: "Genero es un valor válido"
+    dimension: Validez
+    descripcion: "El genero debe ser alguno de los siguientes textos: 'F', 'M' o 'N'"
+  pf_25:
+    column: "PERIODO"
+    rule: "Validación periodo"
+    dimension: Exactitud
+    descripcion: "Los primeros 4 dígitos deben ser entre 2020 y un año mayor al año actual"
+  pf_26:
+    column: "ESTADO"
+    rule: "Estado es un valor válido"
+    dimension: Validez
+    descripcion: "El genero debe ser alguno de los siguientes textos: 'Activo', 'Inactivo'"
+  pf_27:
+    column: "CARGA"
+    rule: "CARGA es un valor no válido"
+    dimension: Validez
+    descripcion: "La carga no debe ser alguno de los siguientes textos: ' A '" 
