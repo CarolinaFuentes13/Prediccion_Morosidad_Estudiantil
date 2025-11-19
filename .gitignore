@@ -1,0 +1,7 @@
+# Ignorar outputs generados automáticamente
+Data_quality/output/*
+Documentation/*.xlsx
+*.csv
+*.xlsx
+*.pdf
+*.zip
