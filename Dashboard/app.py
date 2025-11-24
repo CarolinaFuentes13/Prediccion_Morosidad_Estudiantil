@@ -631,7 +631,7 @@ def procesar_csv_con_api(contents, filename):
         payload = {"inputs": df_new.to_dict(orient="records")}
 
         resp = requests.post(
-            "http://13.220.177.100:8001/api/v1/predict",
+            "http://107.21.77.5:8001/api/v1/predict",
             json=payload
         )
         resp.raise_for_status()
