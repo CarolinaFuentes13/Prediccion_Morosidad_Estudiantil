@@ -560,7 +560,6 @@ def procesar_csv_con_api(contents, filename):
         content_type, content_string = contents.split(',')
         decoded = base64.b64decode(content_string)
         df_new = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
-        
         # Normalizar nombres de columnas (quita BOM, espacios, etc.)
         df_new.columns = (
             df_new.columns.astype(str)
@@ -571,19 +570,32 @@ def procesar_csv_con_api(contents, filename):
         # 2. Verificar que traiga Llave2 (o alguna variante)
         #    Construimos un diccionario "columna normalizada" -> "nombre original"
         clean_cols = {re.sub(r"[^A-Za-z0-9]", "", c).lower(): c for c in df_new.columns}
-
         if "llave2" not in clean_cols:
-            msg = f"El archivo debe incluir la columna 'Llave2' o 'llave2'. Columnas detectadas: {list(df_new.columns)}"
+            msg = f"El archivo debe incluir la columna 'llave2'. Columnas detectadas: {list(df_new.columns)}"
             return df_base.to_dict("records"), msg
 
         # Normalizar nombre de la columna llave a exactamente 'llave2'
         df_new = df_new.rename(columns={clean_cols["llave2"]: "llave2"})
 
+        cols_permitidas = [
+            "llave2", "nombre_linea", "fecha_aprobacion", "antiguedad_meses",
+            "nombre_fondo", "valor_financiacion", "cuotas", "tipo_interes",
+            "vr_neto_matricula", "fecha_nacimiento", "estado_civil", "genero",
+            "facultad", "programa", "nivel", "estado", "tipoestudiante", "sede",
+            "sello", "carga", "grupo_etnico", "tipo_discapacidad", "nacionalidad",
+            "mora", "valor_cuota_inicial", "valor_primera_cuota", "fecha_de_pago",
+            "validacion_valor_financiado", "detalle_estado_final", "tipo_estudiante",
+            "operacion", "cate", "subcate", "cohorte", "mes", "cliente",
+            "media_score", "anob", "valor_maximo", "valor_medio", "valor_bajo",
+            "plataforma"
+        ]
+
+        df_new = df_new[cols_permitidas]
         # 3. Llamar a la API del modelo con las filas nuevas
         payload = {"inputs": df_new.to_dict(orient="records")}
 
         resp = requests.post(
-            "http://3.84.243.122:8001/",  # URL real de la API (ajústala si tu endpoint tiene /api/v1/predict)
+            "http://3.84.243.122:8001/api/v1/predict",  # URL real de la API (ajústala si tu endpoint tiene /api/v1/predict)
             json=payload
         )
         resp.raise_for_status()
