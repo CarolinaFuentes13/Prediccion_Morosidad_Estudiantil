@@ -5,7 +5,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from datetime import date
+from datetime import date, timedelta  # <--- AHORA TAMBIÉN timedelta
 import re, unicodedata, hashlib
 import base64
 import io
@@ -139,6 +139,16 @@ VAL_COL = next(
 # ORDENAR POR FECHA (más reciente primero) ANTES DE CREAR df_base
 df = df.sort_values("fecha_aprobacion", ascending=False).reset_index(drop=True)
 
+# Rango de fechas por defecto: último mes (últimos 30 días desde la fecha máxima disponible)
+if df["fecha_aprobacion"].notna().any():
+    fecha_max = df["fecha_aprobacion"].max().date()
+    fecha_min = df["fecha_aprobacion"].min().date()
+    fecha_ini_default = max(fecha_min, fecha_max - timedelta(days=30))
+    fecha_fin_default = fecha_max
+else:
+    fecha_ini_default = None
+    fecha_fin_default = None
+
 df_base = df.copy()
 
 # ================= Figuras =================
@@ -257,11 +267,28 @@ def fig_riesgo_tiempo(dff):
     return fig
 
 def fig_mapa(dff):
-    if not lat_col or not lon_col:
-        return px.scatter_mapbox(title="Mapa de créditos por categoría predicha")
+    # Verificar que existan las columnas requeridas
+    if dff is None or dff.empty or lat_col not in dff.columns or lon_col not in dff.columns:
+        return px.scatter_mapbox(
+            lat=[],
+            lon=[],
+            zoom=4,
+            height=420,
+            title="Mapa de créditos (sin datos geográficos)"
+        ).update_layout(mapbox_style="open-street-map")
+
+    # Filtrar filas válidas
     dd = dff.dropna(subset=[lat_col, lon_col])
     if dd.empty:
-        return px.scatter_mapbox(title="Mapa de créditos por categoría predicha")
+        return px.scatter_mapbox(
+            lat=[],
+            lon=[],
+            zoom=4,
+            height=420,
+            title="Mapa de créditos (sin datos geográficos válidos)"
+        ).update_layout(mapbox_style="open-street-map")
+
+    # Mapa real
     fig = px.scatter_mapbox(
         dd,
         lat=lat_col,
@@ -274,12 +301,14 @@ def fig_mapa(dff):
         title="Mapa de créditos por categoría de riesgo predicha",
         labels={RIESGO: "Categoría predicha"}
     )
+
     fig.update_layout(
         mapbox_style="open-street-map",
         margin=dict(l=0, r=0, t=60, b=0),
         title_font={"size": 16, "color": "#003366"},
         legend_title_text="Categoría predicha"
     )
+
     return fig
 
 # ================= App =================
@@ -391,8 +420,8 @@ filtros = dbc.Card([
             html.Label("Fecha de aprobación"),
             dcc.DatePickerRange(
                 id="f-fecha",
-                start_date=df["fecha_aprobacion"].min().date() if df["fecha_aprobacion"].notna().any() else None,
-                end_date=df["fecha_aprobacion"].max().date() if df["fecha_aprobacion"].notna().any() else None,
+                start_date=fecha_ini_default,   # <--- ÚLTIMO MES POR DEFECTO
+                end_date=fecha_fin_default,     # <--- HASTA LA FECHA MÁXIMA
                 display_format="YYYY-MM-DD"
             )
         ], md=3),
@@ -556,10 +585,16 @@ def procesar_csv_con_api(contents, filename):
         return df_base.to_dict("records"), ""
 
     try:
-        # 1. Decodificar el CSV que viene desde el navegador 
+        # 1. Decodificar el CSV que viene desde el navegador
         content_type, content_string = contents.split(',')
         decoded = base64.b64decode(content_string)
-        df_new = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
+
+        # Intentar leer primero como UTF-8, si falla usar latin1
+        try:
+            df_new = pd.read_csv(io.StringIO(decoded.decode("utf-8")))
+        except UnicodeDecodeError:
+            df_new = pd.read_csv(io.BytesIO(decoded), encoding="latin1")
+
         # Normalizar nombres de columnas (quita BOM, espacios, etc.)
         df_new.columns = (
             df_new.columns.astype(str)
@@ -591,11 +626,12 @@ def procesar_csv_con_api(contents, filename):
         ]
 
         df_new = df_new[cols_permitidas]
+
         # 3. Llamar a la API del modelo con las filas nuevas
         payload = {"inputs": df_new.to_dict(orient="records")}
 
         resp = requests.post(
-            "http://3.84.243.122:8001/api/v1/predict",  # URL real de la API (ajústala si tu endpoint tiene /api/v1/predict)
+            "http://13.220.177.100:8001/api/v1/predict",
             json=payload
         )
         resp.raise_for_status()
