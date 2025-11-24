@@ -814,4 +814,5 @@ def update(data_store, nombres, riesgo, f_ini, f_fin, fac, prog, fac_clu, prog_c
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8050, debug=True)
+
