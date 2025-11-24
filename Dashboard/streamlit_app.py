@@ -5,6 +5,9 @@ import numpy as np
 from pathlib import Path
 import plotly.express as px
 import re, unicodedata, hashlib
+import base64
+
+
 
 # ================== Config & Theme ==================
 st.set_page_config(page_title="Riesgo de morosidad en créditos estudiantiles", layout="wide")
@@ -114,6 +117,34 @@ def _proper_case(name: str) -> str:
             out.append(p)
     return "".join(out)
 
+def normaliza_cliente(x):
+    if x is None:
+        return None
+    t = str(x).strip()
+    if t == "": 
+        return None
+    # sin acentos y en minúsculas
+    t0 = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode("ascii").lower()
+    t0 = " ".join(t0.split())  # colapsa dobles espacios
+    if t0 in {"estudiante"}:
+        return "Estudiante"
+    if t0 in {"no estudiante", "no-estudiante", "no_estudiante", "noestudiante"}:
+        return "No Estudiante"
+    # fallback: Title Case
+    return t.title()
+
+
+def normaliza_genero(x):
+    t = str(x).strip().lower()
+    fem = {"f","femenino","female","fem","mujer","femenina"}
+    masc = {"m","masculino","male","hombre","varon","varón","masc"}
+    if t in fem: return "f"
+    if t in masc: return "m"
+    # también aceptamos inicial por prefijo
+    if t.startswith("f"): return "f"
+    if t.startswith("m"): return "m"
+    return None
+
 def nombre_fake(seed, genero=None):
     m = [
         "juan","carlos","andres","diego","luis","mateo","jorge","felipe","daniel","santiago",
@@ -129,19 +160,28 @@ def nombre_fake(seed, genero=None):
     ]
 
     h = int(hashlib.sha256(str(seed).encode()).hexdigest(), 16)
-    base = f if str(genero).lower() in {"f","femenino"} else m
+    g = normaliza_genero(genero)
+
+    # si no hay género, repartir 50/50 con el hash
+    if g is None:
+        base = f if (h % 2 == 0) else m
+    else:
+        base = f if g == "f" else m
 
     nombre = base[h % len(base)]
     apellido = ap[(h // 97) % len(ap)]
-
     return f"{_proper_case(nombre)} {_proper_case(apellido)}"
+
 
 # ================== Data ==================
 @st.cache_data
 def load_data():
     DATA = Path("DB_Model") / "df_dash_with_preds.csv"
     df = pd.read_csv(DATA)
-
+    # normaliza 'cliente'
+    if "cliente" in df.columns:
+        df["cliente"] = df["cliente"].map(normaliza_cliente)
+    
     if "fecha_aprobacion" in df.columns:
         df["fecha_aprobacion"] = pd.to_datetime(df["fecha_aprobacion"], errors="coerce")
         ultima_fecha = df["fecha_aprobacion"].max()
@@ -176,11 +216,11 @@ def load_data():
 
     def rule_cluster(txt):
         t = nrm(txt)
-        if any(x in t for x in ["ingenier","sistemas","software","datos"]): return "software y ti"
-        if any(x in t for x in ["medic","salud","enfermer","odont"]):       return "medicina y salud"
-        if any(x in t for x in ["admin","negoc","finan","conta","mercad"]): return "negocios y adm"
-        if any(x in t for x in ["derech","jur"]):                           return "derecho"
-        return "otros"
+        if any(x in t for x in ["ingenier","sistemas","software","datos"]): return "Software y TI"
+        if any(x in t for x in ["medic","salud","enfermer","odont"]):       return "Medicina y Salud"
+        if any(x in t for x in ["admin","negoc","finan","conta","mercad"]): return "Negocios y Adm"
+        if any(x in t for x in ["derech","jur"]):                           return "Derecho"
+        return "Otros"
     df["programa_cluster"] = df["programa"].astype(str).map(rule_cluster)
     df["facultad_cluster"] = df["facultad"].astype(str).map(rule_cluster)
 
@@ -193,7 +233,7 @@ def load_data():
         df["mora_flag"] = 0
 
     # créditos activos por estudiante
-    col_id2 = next((c for c in df.columns if c.lower()=="idbanner"), None)
+    col_id2 = next((c for c in df.columns if c.lower()=="id_estudiante"), None)
     if col_id2:
         df["_credits_by_id"] = df.groupby(col_id2)[col_id2].transform("size")
     else:
@@ -210,14 +250,44 @@ def load_data():
 
 df, ultima_fecha, RIESGO, ORDEN, lat_col, lon_col, VAL_COL = load_data()
 
+
+def find_logo_path():
+    # __file__ está en Dashboard/streamlit_app.py
+    here = Path(__file__).parent     
+    root = here.parent              
+    candidates = [
+        root / "assets" / "logo_uni.png",       
+        here / "assets" / "logo_uni.png",        
+        Path("assets/logo_uni.png"),             
+        Path("Dashboard/assets/logo_uni.png"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return str(p)   
+    return None
+
+def show_logo_inline():
+    lp = find_logo_path()
+    if not lp:
+        return
+    try:
+        with open(lp, "rb") as f:
+            b64 = base64.b64encode(f.read()).decode("utf-8")
+        # altura como en tu Dash
+        st.markdown(
+            f'<img src="data:image/png;base64,{b64}" style="height:68px;object-fit:contain;" />',
+            unsafe_allow_html=True
+        )
+    except Exception:
+        st.write("")
+
+
+
 # ================== Header ==================
 st.markdown('<div class="header-wrap">', unsafe_allow_html=True)
 col_a, col_b, col_c, col_d = st.columns([1,0.1,6,3], gap="small")
 with col_a:
-    try:
-        st.image("assets/logo_uni.png", use_container_width=False)
-    except Exception:
-        st.write("")
+    show_logo_inline()   # ← ya no llama st.image; usa base64
 with col_b:
     st.markdown('<div class="header-divider"></div>', unsafe_allow_html=True)
 with col_c:
@@ -229,10 +299,10 @@ with col_d:
     )
 st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown(f'<div class="small-muted">Actualización: {ultima_fecha.strftime("%Y-%m-%d") if pd.notna(ultima_fecha) else "-"}</div>', unsafe_allow_html=True)
-st.write("")
 
-# ================== Filtros (sin labels, sobrios) ==================
+
+
+# ================== Filtros ==================
 with st.container():
     st.markdown('<div class="container-soft card"><div class="card-body">', unsafe_allow_html=True)
     r1c1, r1c2, r1c3, r1c4 = st.columns(4, gap="medium")
