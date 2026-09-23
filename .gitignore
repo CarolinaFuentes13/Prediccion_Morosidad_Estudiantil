@@ -1,0 +1,7 @@
+# Secretos locales de Streamlit (usuarios del tablero, URL de la API)
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
