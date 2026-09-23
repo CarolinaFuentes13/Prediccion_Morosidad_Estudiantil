@@ -1,0 +1,221 @@
+{
+ "fuente": "Random Forest empaquetado model_morosidad v0.0.1 · importancia Gini (reducción media de impureza)",
+ "n_arboles": 457,
+ "clases": [
+  "Alto",
+  "Bajo",
+  "Medio"
+ ],
+ "items": [
+  {
+   "variable": "antiguedad_meses",
+   "importancia": 0.158491,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "fecha_aprobacion",
+   "importancia": 0.147688,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "cuotas",
+   "importancia": 0.07219,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "fecha_nacimiento",
+   "importancia": 0.064628,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "llave2",
+   "importancia": 0.063232,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "valor_primera_cuota",
+   "importancia": 0.051472,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "validacion_valor_financiado",
+   "importancia": 0.03461,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "vr_neto_matricula",
+   "importancia": 0.032982,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "mes",
+   "importancia": 0.030276,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "valor_financiacion",
+   "importancia": 0.025793,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "programa",
+   "importancia": 0.024858,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "valor_cuota_inicial",
+   "importancia": 0.024568,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "media_score",
+   "importancia": 0.020515,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "valor_maximo",
+   "importancia": 0.019388,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "tipoestudiante",
+   "importancia": 0.019166,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "valor_bajo",
+   "importancia": 0.019163,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "valor_medio",
+   "importancia": 0.019034,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "nombre_fondo",
+   "importancia": 0.01696,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "cohorte",
+   "importancia": 0.015694,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "fecha_de_pago",
+   "importancia": 0.014361,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "tipo_interes",
+   "importancia": 0.011652,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "tipo_estudiante",
+   "importancia": 0.011321,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "facultad",
+   "importancia": 0.011297,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "operacion",
+   "importancia": 0.010911,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "nombre_linea",
+   "importancia": 0.010885,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "carga",
+   "importancia": 0.01059,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "cliente",
+   "importancia": 0.008927,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "estado_civil",
+   "importancia": 0.008634,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "nivel",
+   "importancia": 0.008339,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "grupo_etnico",
+   "importancia": 0.006324,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "genero",
+   "importancia": 0.005611,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "anob",
+   "importancia": 0.005237,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "mora",
+   "importancia": 0.004723,
+   "tipo": "numérica"
+  },
+  {
+   "variable": "sello",
+   "importancia": 0.003084,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "estado",
+   "importancia": 0.002468,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "sede",
+   "importancia": 0.001961,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "detalle_estado_final",
+   "importancia": 0.001873,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "plataforma",
+   "importancia": 0.000475,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "subcate",
+   "importancia": 0.000321,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "cate",
+   "importancia": 0.000237,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "nacionalidad",
+   "importancia": 3.5e-05,
+   "tipo": "categórica"
+  },
+  {
+   "variable": "tipo_discapacidad",
+   "importancia": 2.8e-05,
+   "tipo": "categórica"
+  }
+ ]
+}
