@@ -1,0 +1,31 @@
+# Tema institucional (negro · amarillo Uniandes · blanco) para el SAT.
+# Streamlit lee este archivo desde el directorio donde se ejecuta `streamlit run`
+# (la raíz del repositorio, también en Streamlit Community Cloud).
+
+[client]
+toolbarMode = "viewer"
+
+[server]
+maxUploadSize = 200
+
+[theme]
+# Tema fijo en modo claro (no sigue el modo oscuro del sistema del usuario).
+base = "light"
+font = "Inter, 'Source Sans Pro', 'Segoe UI', sans-serif"
+headingFont = "'Space Grotesk', Inter, 'Source Sans Pro', sans-serif"
+baseRadius = "0.75rem"
+buttonRadius = "0.65rem"
+showSidebarBorder = true
+
+primaryColor = "#141414"
+backgroundColor = "#F6F6F3"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#141414"
+linkColor = "#8A6A00"
+borderColor = "#E3E1DA"
+dataframeHeaderBackgroundColor = "#F1EFE8"
+chartCategoricalColors = ["#141414", "#FFD100", "#3E63DD", "#30A46C", "#E5484D", "#8E4EC6", "#F5A524", "#12A594"]
+
+[theme.sidebar]
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F6F6F3"
